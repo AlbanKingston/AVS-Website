@@ -1,0 +1,18 @@
+/* Hide the public Navbar, Footer, and FloatingActions inside admin routes */
+.admin-scope {
+  display: contents;
+}
+
+/* The root layout wraps: <Navbar />, <main>, <Footer />, <FloatingActions />
+   When inside /admin, we hide everything except <main>'s children. */
+body:has(.admin-scope) > header,
+body:has(.admin-scope) > nav,
+body:has(.admin-scope) > footer,
+body:has(.admin-scope) > div[class*="floating"],
+body:has(.admin-scope) > aside {
+  display: none !important;
+}
+
+body:has(.admin-scope) > main {
+  padding-top: 0 !important;
+}

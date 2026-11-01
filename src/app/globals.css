@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+body {
+  @apply bg-obsidian text-ivory font-body antialiased;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-image:
+    radial-gradient(900px 500px at 85% -10%, rgba(214, 173, 85, 0.06), transparent 60%),
+    radial-gradient(700px 400px at -10% 60%, rgba(214, 173, 85, 0.04), transparent 60%);
+  background-attachment: fixed;
+}
+
+@supports (height: 100svh) {
+  .hero-section {
+    min-height: calc(100svh - 4rem);
+  }
+}
+
+@media (hover: none) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+::selection {
+  background: #D6AD55;
+  color: #0B0B0B;
+}
+
+@layer components {
+  .container-avs {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+  .section {
+    @apply py-20 sm:py-28;
+  }
+  .gradient-text {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition duration-300;
+  }
+  .btn-primary {
+    @apply btn bg-gold-gradient text-obsidian shadow-glow hover:-translate-y-0.5 hover:shadow-glow-lg;
+  }
+  .btn-ghost {
+    @apply btn border border-gold/30 text-gold hover:border-gold hover:text-gold-light;
+  }
+  .card {
+    @apply rounded-3xl border border-border bg-surface/80 backdrop-blur;
+  }
+  .input {
+    @apply w-full rounded-xl border border-border bg-charcoal px-4 py-3 text-sm text-ivory placeholder-muted outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/20;
+  }
+  .eyebrow {
+    @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-gold;
+  }
+}
