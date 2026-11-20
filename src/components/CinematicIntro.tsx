@@ -25,7 +25,7 @@ export default function CinematicIntro() {
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    const duration = reducedMotion ? 2400 : 8000;
+    const duration = reducedMotion ? 2400 : 4500;
     const animation = introRef.current
       ?.getAnimations()
       .find((item) => {
@@ -93,13 +93,16 @@ export default function CinematicIntro() {
             aria-hidden="true"
           >
             <path
+              pathLength="1"
               d="M302 130 284 157 318 178 290 199 323 220 296 244 309 273"
             />
             <path
-              d="M190 148 238 168 224 192 278 202 259 230 305 246 288 269"
+              pathLength="1"
+              d="M207 141 239 164 220 183 265 204 250 227"
             />
             <path
-              d="M426 143 386 160 405 180 360 198 379 219 343 241"
+              pathLength="1"
+              d="M414 141 379 162 395 181 352 199 371 218 344 239"
             />
           </svg>
           <span className="cinematic-intro__fragment cinematic-intro__fragment--one" />
