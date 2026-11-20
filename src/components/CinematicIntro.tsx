@@ -26,10 +26,9 @@ export default function CinematicIntro() {
       const navigation = performance.getEntriesByType(
         "navigation"
       )[0] as PerformanceNavigationTiming | undefined;
-      const isReload =
-        navigation?.type === "reload" || navigation?.type === "back_forward";
+      const isHistoryRestore = navigation?.type === "back_forward";
 
-      if (window.sessionStorage.getItem(INTRO_KEY) && isReload) {
+      if (window.sessionStorage.getItem(INTRO_KEY) && isHistoryRestore) {
         setComplete(true);
         document.documentElement.dataset.avsIntroSeen = "true";
         return;
@@ -57,7 +56,7 @@ export default function CinematicIntro() {
         setPlaying(false);
         setComplete(true);
       },
-      reducedMotion ? 250 : 3900
+      reducedMotion ? 850 : 3900
     );
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {

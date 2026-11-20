@@ -3,12 +3,25 @@
 import { useState } from "react";
 import { Plus, Eye, EyeOff, Pencil, Trash2, Quote, MessageSquareQuote } from "lucide-react";
 import type { Testimonial } from "@/lib/types";
+import { DEFAULT_TESTIMONIALS } from "@/lib/defaults";
+import { createClient } from "@/lib/supabase/client";
 import { useTable } from "./useTable";
 import { ErrorMsg, Field, Loading, Modal, TabHeader } from "./ui";
 
 export default function TestimonialsTab() {
-  const { rows, loading, error, save, remove } = useTable<Testimonial>("testimonials", "client_name");
+  const { rows, loading, error, save, remove, reload } = useTable<Testimonial>("testimonials", "client_name");
   const [edit, setEdit] = useState<Partial<Testimonial> | null>(null);
+  const [msg, setMsg] = useState("");
+
+  async function seedPlaceholder() {
+    setMsg("");
+    const payload = DEFAULT_TESTIMONIALS.map(({ id, ...testimonial }) => testimonial);
+    const { error: err } = await createClient()
+      .from("testimonials")
+      .insert(payload);
+    if (err) setMsg(err.message);
+    else reload();
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -35,7 +48,7 @@ export default function TestimonialsTab() {
           </button>
         }
       />
-      <ErrorMsg msg={error} />
+      <ErrorMsg msg={error || msg} />
       {loading ? (
         <Loading />
       ) : rows.length === 0 ? (
@@ -45,21 +58,27 @@ export default function TestimonialsTab() {
             No testimonials yet.
           </p>
           <p className="mt-1 text-sm text-white/30">
-            Add real client feedback to build trust on your website.
+            The built-in testimonial is only a placeholder. Replace it with
+            real client feedback before publishing.
           </p>
-          <button
-            className="btn-primary mt-4 !py-2"
-            onClick={() =>
-              setEdit({
-                client_name: "",
-                client_role: "",
-                quote: "",
-                published: true,
-              })
-            }
-          >
-            <Plus size={16} /> Add your first testimonial
-          </button>
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
+            <button className="btn-primary !py-2" onClick={seedPlaceholder}>
+              Load placeholder testimonial
+            </button>
+            <button
+              className="btn-ghost !py-2"
+              onClick={() =>
+                setEdit({
+                  client_name: "",
+                  client_role: "",
+                  quote: "",
+                  published: true,
+                })
+              }
+            >
+              <Plus size={16} /> Add your first testimonial
+            </button>
+          </div>
         </div>
       ) : (
         <div className="space-y-3">

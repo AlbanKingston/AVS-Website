@@ -419,6 +419,6 @@ html[data-avs-intro-seen] .cinematic-intro {
 @media (prefers-reduced-motion: reduce) {
   .cinematic-intro,
   .cinematic-intro.is-playing {
-    animation: avs-intro-dismiss 0.25s ease forwards !important;
+    animation: avs-intro-dismiss 0.85s ease forwards !important;
   }
 }

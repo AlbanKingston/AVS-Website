@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Plus, Upload, Star, Pencil, Trash2 } from "lucide-react";
 import { PORTFOLIO_CATEGORIES, type PortfolioProject } from "@/lib/types";
+import { DEFAULT_PORTFOLIO } from "@/lib/defaults";
 import { createClient } from "@/lib/supabase/client";
 import { useTable } from "./useTable";
 import { ErrorMsg, Field, Loading, Modal, TabHeader } from "./ui";
@@ -17,7 +18,7 @@ const EMPTY: Partial<PortfolioProject> = {
 };
 
 export default function PortfolioTab() {
-  const { rows, loading, error, save, remove } = useTable<PortfolioProject>(
+  const { rows, loading, error, save, remove, reload } = useTable<PortfolioProject>(
     "portfolio_projects",
     "created_at",
     false
@@ -26,6 +27,16 @@ export default function PortfolioTab() {
   const [uploading, setUploading] = useState(false);
   const [msg, setMsg] = useState("");
   const [dragOver, setDragOver] = useState(false);
+
+  async function seedDefaults() {
+    setMsg("");
+    const payload = DEFAULT_PORTFOLIO.map(({ id, ...project }) => project);
+    const { error: err } = await createClient()
+      .from("portfolio_projects")
+      .insert(payload);
+    if (err) setMsg(err.message);
+    else await reload();
+  }
 
   async function upload(file: File) {
     setUploading(true);
@@ -71,7 +82,7 @@ export default function PortfolioTab() {
           </button>
         }
       />
-      <ErrorMsg msg={error} />
+      <ErrorMsg msg={error || msg} />
       {loading ? (
         <Loading />
       ) : rows.length === 0 ? (
@@ -79,14 +90,20 @@ export default function PortfolioTab() {
           <Upload size={36} className="mx-auto text-muted/30" />
           <p className="mt-3 text-muted">No projects saved yet.</p>
           <p className="mt-1 text-sm text-muted/60">
-            Add portfolio projects to showcase on the public website.
+            The public site shows the built-in projects until you save projects
+            in Supabase.
           </p>
-          <button
-            className="btn-primary mt-4 !py-2"
-            onClick={() => setEdit({ ...EMPTY })}
-          >
-            <Plus size={16} /> Add your first project
-          </button>
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
+            <button className="btn-primary !py-2" onClick={seedDefaults}>
+              Load default projects
+            </button>
+            <button
+              className="btn-ghost !py-2"
+              onClick={() => setEdit({ ...EMPTY })}
+            >
+              <Plus size={16} /> Add your first project
+            </button>
+          </div>
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
