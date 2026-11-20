@@ -23,7 +23,13 @@ export default function CinematicIntro() {
     initialized.current = true;
 
     try {
-      if (window.sessionStorage.getItem(INTRO_KEY)) {
+      const navigation = performance.getEntriesByType(
+        "navigation"
+      )[0] as PerformanceNavigationTiming | undefined;
+      const isReload =
+        navigation?.type === "reload" || navigation?.type === "back_forward";
+
+      if (window.sessionStorage.getItem(INTRO_KEY) && isReload) {
         setComplete(true);
         document.documentElement.dataset.avsIntroSeen = "true";
         return;
