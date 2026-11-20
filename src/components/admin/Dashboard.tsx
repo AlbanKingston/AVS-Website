@@ -47,6 +47,25 @@ export default function Dashboard() {
       .then(({ data }) => setUser(data.user));
   }, []);
 
+  useEffect(() => {
+    if (!sidebarOpen) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousRootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSidebarOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousRootOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [sidebarOpen]);
+
   async function logout() {
     await createClient().auth.signOut();
     router.replace("/admin/login");
@@ -59,18 +78,20 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="relative min-h-screen md:flex">
+    <div className="relative min-h-screen min-h-[100dvh] md:flex">
       {/* Mobile overlay */}
       {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden"
+        <button
+          type="button"
+          aria-label="Close navigation"
+          className="fixed inset-0 z-30 bg-black/65 md:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-72 flex-col border-r border-border bg-charcoal/95 backdrop-blur-xl transition-transform duration-300 md:sticky md:top-0 md:z-auto md:h-screen md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-72 flex-col border-r border-border bg-charcoal pt-[env(safe-area-inset-top)] transition-transform duration-200 ease-out md:sticky md:top-0 md:z-auto md:h-[100dvh] md:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -78,7 +99,8 @@ export default function Dashboard() {
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <Logo size={30} />
           <button
-            className="rounded-lg p-1.5 text-muted hover:bg-surface md:hidden"
+            aria-label="Close navigation"
+            className="grid h-11 w-11 place-items-center rounded-lg text-muted hover:bg-surface md:hidden"
             onClick={() => setSidebarOpen(false)}
           >
             <X size={20} />
@@ -94,7 +116,7 @@ export default function Dashboard() {
             <button
               key={id}
               onClick={() => switchTab(id)}
-              className={`group flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm transition-all duration-200 ${
+              className={`group flex min-h-11 w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm transition-[background-color,color] duration-200 ${
                 tab === id
                   ? "bg-gold-gradient font-semibold text-obsidian shadow-glow-sm"
                   : "text-muted hover:bg-surface hover:text-ivory"
@@ -114,7 +136,7 @@ export default function Dashboard() {
         </nav>
 
         {/* Footer */}
-        <div className="border-t border-border px-3 py-4">
+        <div className="border-t border-border px-3 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4">
           {user?.email && (
             <p
               className="mb-3 truncate px-3 text-xs text-muted/50"
@@ -136,10 +158,12 @@ export default function Dashboard() {
       {/* Main */}
       <section className="min-h-screen flex-1">
         {/* Top bar (mobile) */}
-        <div className="sticky top-0 z-20 flex items-center gap-3 border-b border-border bg-obsidian/80 px-4 py-3 backdrop-blur-xl md:hidden">
+        <div className="sticky top-0 z-20 flex items-center gap-3 border-b border-border bg-obsidian px-4 pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))] md:hidden">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="rounded-lg p-2 text-muted hover:bg-surface"
+            aria-label="Open navigation"
+            aria-expanded={sidebarOpen}
+            className="grid h-11 w-11 place-items-center rounded-lg text-muted hover:bg-surface"
           >
             <Menu size={20} />
           </button>

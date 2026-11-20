@@ -17,25 +17,35 @@ const LINKS = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const path = usePathname();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [path]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousRootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousRootOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
+
   if (path.startsWith("/admin")) return null;
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-gold/10 bg-obsidian/95 shadow-[0_1px_20px_rgba(214,173,85,0.05)] backdrop-blur-xl"
-          : "border-b border-transparent bg-obsidian/80 backdrop-blur-md"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-obsidian/95 pt-[env(safe-area-inset-top)]">
       <div className="container-avs flex h-16 items-center justify-between">
         <Link href="/" aria-label="AVS home" onClick={() => setOpen(false)}>
           <Logo size={50} />
@@ -45,6 +55,7 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
+              aria-current={path === l.href ? "page" : undefined}
               className={`relative text-sm font-medium transition-colors duration-300 hover:text-gold ${
                 path === l.href ? "text-gold" : "text-ivory/70"
               }`}
@@ -60,36 +71,48 @@ export default function Navbar() {
           </Link>
         </nav>
         <button
-          className="text-ivory/70 transition hover:text-gold md:hidden"
+          className="grid h-11 w-11 place-items-center rounded-full text-ivory/70 transition-colors hover:text-gold md:hidden"
           aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
           onClick={() => setOpen(!open)}
         >
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
-        <nav className="container-avs flex flex-col gap-1 border-t border-border bg-obsidian py-4 md:hidden">
-          {LINKS.map((l) => (
+        <nav
+          id="mobile-navigation"
+          className="container-avs max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-t border-border bg-obsidian py-4 md:hidden"
+          style={{
+            maxHeight:
+              "calc(100dvh - 4rem - env(safe-area-inset-top))",
+          }}
+        >
+          <div className="flex flex-col gap-1">
+            {LINKS.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={path === l.href ? "page" : undefined}
+                onClick={() => setOpen(false)}
+                className={`rounded-xl px-3 py-3 text-base transition ${
+                  path === l.href
+                    ? "bg-gold/10 text-gold"
+                    : "text-ivory/80 hover:text-gold"
+                }`}
+              >
+                {l.label}
+              </Link>
+            ))}
             <Link
-              key={l.href}
-              href={l.href}
+              href="/contact"
               onClick={() => setOpen(false)}
-              className={`rounded-xl px-3 py-3 text-base transition ${
-                path === l.href
-                  ? "bg-gold/10 text-gold"
-                  : "text-ivory/80 hover:text-gold"
-              }`}
+              className="btn-primary mt-2"
             >
-              {l.label}
+              Get a Free Quote
             </Link>
-          ))}
-          <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            className="btn-primary mt-2"
-          >
-            Get a Free Quote
-          </Link>
+          </div>
         </nav>
       )}
     </header>

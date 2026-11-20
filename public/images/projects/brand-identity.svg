@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="70" x2="1090" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#25132D"/>
+      <stop offset=".52" stop-color="#10121B"/>
+      <stop offset="1" stop-color="#090B12"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="258" y1="160" x2="773" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F1E8"/>
+      <stop offset="1" stop-color="#D8C8B2"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="416" y1="282" x2="679" y2="594" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8D982"/>
+      <stop offset="1" stop-color="#B88638"/>
+    </linearGradient>
+    <filter id="shadow" x="170" y="106" width="779" height="746" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="910" cy="142" r="205" fill="#9A5A82" fill-opacity=".12"/>
+  <path d="M0 690C226 612 422 834 676 762c205-59 329-162 524-116v254H0V690Z" fill="#08090E" fill-opacity=".64"/>
+  <ellipse cx="560" cy="746" rx="342" ry="43" fill="#000" fill-opacity=".55" filter="url(#shadow)"/>
+  <g transform="rotate(-7 507 450)">
+    <rect x="253" y="164" width="514" height="586" rx="10" fill="url(#paper)"/>
+    <rect x="289" y="201" width="442" height="511" rx="4" fill="#F2E9DC"/>
+    <path d="M510 286c-78 0-141 63-141 141v52h60v-52c0-45 36-81 81-81s81 36 81 81v52h60v-52c0-78-63-141-141-141Z" fill="#222027"/>
+    <path d="M428 465h164v99c0 46-37 83-82 83s-82-37-82-83v-99Z" fill="url(#gold)"/>
+    <path d="M462 499h96v65c0 27-22 49-48 49s-48-22-48-49v-65Z" fill="#252127"/>
+    <path d="M387 618h246" stroke="#827661" stroke-width="2"/>
+    <text x="510" y="662" fill="#2C2926" font-family="Georgia,serif" font-size="24" letter-spacing="8" text-anchor="middle">AUREL</text>
+    <text x="510" y="687" fill="#81796D" font-family="Arial,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">IDENTITY  /  EST. 2025</text>
+  </g>
+  <g transform="rotate(8 878 518)">
+    <rect x="793" y="318" width="208" height="291" rx="8" fill="#EAE0D2"/>
+    <rect x="811" y="337" width="172" height="253" rx="3" fill="#F6F0E7"/>
+    <circle cx="897" cy="432" r="43" stroke="#B88E48" stroke-width="2"/>
+    <path d="M897 400v65M865 432h64" stroke="#26232A" stroke-width="5"/>
+    <text x="897" y="508" fill="#27242A" font-family="Georgia,serif" font-size="16" letter-spacing="4" text-anchor="middle">AUREL</text>
+    <text x="897" y="534" fill="#8A806F" font-family="Arial,sans-serif" font-size="8" letter-spacing="2" text-anchor="middle">BUSINESS CARD</text>
+  </g>
+  <g>
+    <rect x="158" y="540" width="116" height="116" rx="12" fill="#E8D9C6"/>
+    <rect x="171" y="553" width="90" height="90" rx="5" fill="#B98D48"/>
+    <rect x="171" y="654" width="90" height="7" rx="3.5" fill="#F2E9DC"/>
+    <rect x="277" y="540" width="116" height="116" rx="12" fill="#E8D9C6"/>
+    <rect x="290" y="553" width="90" height="90" rx="5" fill="#29262D"/>
+    <rect x="290" y="654" width="90" height="7" rx="3.5" fill="#F2E9DC"/>
+  </g>
+  <text x="68" y="835" fill="#F1D184" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">BRAND IDENTITY SYSTEM</text>
+</svg>

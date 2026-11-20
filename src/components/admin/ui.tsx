@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 export const TabHeader = ({ title, action }: { title: string; action?: ReactNode }) => (
   <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -34,22 +34,44 @@ export const Modal = ({
   title: string;
   onClose: () => void;
   children: ReactNode;
-}) => (
-  <div
-    className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur"
-    onClick={onClose}
-  >
+}) => {
+  const closeRef = useRef(onClose);
+  closeRef.current = onClose;
+
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousRootOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeRef.current();
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousRootOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  return (
     <div
-      className="card my-8 w-full max-w-xl p-6 sm:p-8"
-      onClick={(e) => e.stopPropagation()}
-      role="dialog"
-      aria-modal="true"
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain bg-black/85 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-[calc(1rem+env(safe-area-inset-top))]"
+      onClick={onClose}
     >
-      <h2 className="mb-5 font-display text-xl font-bold">{title}</h2>
-      {children}
+      <div
+        className="card my-auto w-full max-w-xl p-6 sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label={title}
+      >
+        <h2 className="mb-5 font-display text-xl font-bold">{title}</h2>
+        {children}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const lines = (s: string) =>
   s

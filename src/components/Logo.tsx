@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-export default function Logo({ size = 40 }: { size?: number }) {
+export default function Logo({
+  size = 40,
+  priority = false,
+}: {
+  size?: number;
+  priority?: boolean;
+}) {
   const w = Math.round(size * 1.3);
   const h = size;
 
@@ -16,7 +22,7 @@ export default function Logo({ size = 40 }: { size?: number }) {
           width={w}
           height={h}
           className="h-full w-full object-contain drop-shadow-[0_0_8px_rgba(214,173,85,0.4)]"
-          priority
+          priority={priority}
         />
       </span>
       <span className="leading-none">

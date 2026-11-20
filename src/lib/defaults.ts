@@ -6,10 +6,6 @@ import type {
   Testimonial,
 } from "./types";
 
-// Placeholder images (replace through the admin dashboard once real work is uploaded).
-const img = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=70`;
-
 export const DEFAULT_SETTINGS: SiteSettings = {
   business_email: "", // TODO: set in Admin → Contact Details
   phone: "", // TODO
@@ -35,7 +31,7 @@ export const DEFAULT_SERVICES: Service[] = [
       "Social media creatives",
       "Festival posters",
     ],
-    image_url: img("photo-1626785774573-4b799315345d"),
+    image_url: "/images/projects/brand-identity.svg",
     sort_order: 1,
   },
   {
@@ -50,7 +46,7 @@ export const DEFAULT_SERVICES: Service[] = [
       "Promotional campaigns",
       "Reels and video promotions",
     ],
-    image_url: img("photo-1611162617213-7d7a39e9b1d7"),
+    image_url: "/images/projects/instagram-campaign.svg",
     sort_order: 2,
   },
   {
@@ -65,7 +61,7 @@ export const DEFAULT_SERVICES: Service[] = [
       "Custom web applications",
       "Website maintenance",
     ],
-    image_url: img("photo-1547658719-da2b51169166"),
+    image_url: "/images/projects/business-website.svg",
     sort_order: 3,
   },
   {
@@ -81,7 +77,7 @@ export const DEFAULT_SERVICES: Service[] = [
       "Business stationery",
       "Custom printing solutions",
     ],
-    image_url: img("photo-1562564055-71e051d33c19"),
+    image_url: "/images/projects/printing-solutions.svg",
     sort_order: 5,
   },
   {
@@ -96,7 +92,7 @@ export const DEFAULT_SERVICES: Service[] = [
       "Motion graphics",
       "AI-powered creative content",
     ],
-    image_url: img("photo-1492691527719-9d1e07e534b4"),
+    image_url: "/images/projects/promo-video.svg",
     sort_order: 6,
   },
 ];
@@ -146,7 +142,7 @@ export const DEFAULT_PORTFOLIO: PortfolioProject[] = [
     title: "Brand Identity Concept",
     category: "Branding",
     description: "Placeholder project. Replace via Admin → Portfolio.",
-    image_url: img("photo-1634942537034-2531766767d1"),
+    image_url: "/images/projects/brand-identity.svg",
     featured: true,
   },
   {
@@ -154,7 +150,7 @@ export const DEFAULT_PORTFOLIO: PortfolioProject[] = [
     title: "Festival Poster Series",
     category: "Graphic Designing",
     description: "Placeholder project. Replace via Admin → Portfolio.",
-    image_url: img("photo-1561070791-2526d30994b8"),
+    image_url: "/images/projects/festival-poster.svg",
     featured: true,
   },
   {
@@ -162,15 +158,15 @@ export const DEFAULT_PORTFOLIO: PortfolioProject[] = [
     title: "Business Website",
     category: "Website Development",
     description: "Placeholder project. Replace via Admin → Portfolio.",
-    image_url: img("photo-1467232004584-a241de8bcf5d"),
-    featured: false,
+    image_url: "/images/projects/business-website.svg",
+    featured: true,
   },
   {
     id: "w4",
     title: "Instagram Campaign",
     category: "Social Media Campaigns",
     description: "Placeholder project. Replace via Admin → Portfolio.",
-    image_url: img("photo-1611605698335-8b1569810432"),
+    image_url: "/images/projects/instagram-campaign.svg",
     featured: false,
   },
   {
@@ -178,10 +174,15 @@ export const DEFAULT_PORTFOLIO: PortfolioProject[] = [
     title: "Promo Video Reel",
     category: "Video Production",
     description: "Placeholder project. Replace via Admin → Portfolio.",
-    image_url: img("photo-1536240478700-b869070f9279"),
+    image_url: "/images/projects/promo-video.svg",
     featured: false,
   },
 ];
+
+export function getPortfolioFallbackImage(category: PortfolioProject["category"]) {
+  const project = DEFAULT_PORTFOLIO.find((item) => item.category === category);
+  return project?.image_url ?? DEFAULT_PORTFOLIO[0].image_url;
+}
 
 export const DEFAULT_TESTIMONIALS: Testimonial[] = [
   {

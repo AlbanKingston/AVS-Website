@@ -5,24 +5,11 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import Logo from "./Logo";
 
-const ORBS = [
-  { c: "bg-gold/15", s: "h-80 w-80", p: "left-[5%] top-[15%]", d: "0s" },
-  { c: "bg-gold-light/10", s: "h-64 w-64", p: "right-[8%] top-[25%]", d: "2s" },
-  { c: "bg-gold/10", s: "h-52 w-52", p: "left-[42%] bottom-[10%]", d: "4s" },
-];
-
 export default function Hero() {
   return (
-    <section className="hero-section relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden">
-      {/* animated background */}
+    <section className="hero-section relative flex items-center overflow-hidden">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        {ORBS.map((o, i) => (
-          <div
-            key={i}
-            className={`absolute ${o.s} ${o.p} ${o.c} animate-float rounded-full blur-[100px]`}
-            style={{ animationDelay: o.d }}
-          />
-        ))}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_18%_35%,rgba(214,173,85,0.10),transparent_35%),radial-gradient(ellipse_at_82%_20%,rgba(240,213,138,0.08),transparent_32%),radial-gradient(ellipse_at_55%_90%,rgba(214,173,85,0.06),transparent_38%)]" />
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -41,14 +28,15 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
           className="mb-8 flex justify-center"
         >
-          <Logo size={56} />
+          <Logo size={56} priority />
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
+          transition={{ duration: 0.38, delay: 0.04 }}
           className="mx-auto max-w-5xl font-display text-4xl font-bold leading-[1.08] sm:text-6xl lg:text-7xl"
         >
           WE CREATE. WE ELEVATE.
@@ -58,7 +46,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
+          transition={{ delay: 0.08, duration: 0.32 }}
           className="mx-auto mt-6 max-w-2xl text-base text-muted sm:text-lg"
         >
           Transforming ideas into powerful digital experiences through
@@ -67,7 +55,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.12, duration: 0.32 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link href="/contact" className="btn-primary">
@@ -80,7 +68,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
-          transition={{ delay: 0.9 }}
+          transition={{ delay: 0.16, duration: 0.3 }}
           className="mt-12 text-xs uppercase tracking-[0.3em] text-gold/50"
         >
           Creativity That Makes You Viral.

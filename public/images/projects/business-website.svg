@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="134" y1="42" x2="1099" y2="857" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D2738"/>
+      <stop offset=".55" stop-color="#0B141F"/>
+      <stop offset="1" stop-color="#090B10"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="324" y1="182" x2="859" y2="566" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9F1F4"/>
+      <stop offset="1" stop-color="#B8D3D7"/>
+    </linearGradient>
+    <linearGradient id="desk" x1="178" y1="657" x2="1051" y2="778" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#604A3A"/>
+      <stop offset=".5" stop-color="#30251F"/>
+      <stop offset="1" stop-color="#161719"/>
+    </linearGradient>
+    <filter id="shadow" x="129" y="92" width="965" height="745" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="27"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="947" cy="171" r="230" fill="#4B8E9D" fill-opacity=".11"/>
+  <path d="M0 644h1200v256H0V644Z" fill="#080B10" fill-opacity=".48"/>
+  <ellipse cx="610" cy="734" rx="439" ry="52" fill="#000" fill-opacity=".65" filter="url(#shadow)"/>
+  <path d="M113 661h978l-40 92H172l-59-92Z" fill="url(#desk)"/>
+  <path d="M173 752h854l-26 21H195l-22-21Z" fill="#171414"/>
+  <g>
+    <rect x="266" y="132" width="591" height="414" rx="19" fill="#20282E"/>
+    <rect x="282" y="148" width="559" height="380" rx="8" fill="#0B1118"/>
+    <rect x="296" y="162" width="531" height="352" rx="3" fill="url(#screen)"/>
+    <rect x="296" y="162" width="531" height="32" fill="#E1E9EB"/>
+    <circle cx="312" cy="178" r="4" fill="#DE8174"/>
+    <circle cx="327" cy="178" r="4" fill="#E7BE69"/>
+    <circle cx="342" cy="178" r="4" fill="#75B88F"/>
+    <rect x="355" y="171" width="314" height="13" rx="6" fill="#C5D1D4"/>
+    <rect x="296" y="194" width="531" height="40" fill="#F9F9F4"/>
+    <circle cx="329" cy="214" r="11" fill="#AA8D5D"/>
+    <text x="352" y="218" fill="#1C3442" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="2">NORTHLINE</text>
+    <text x="648" y="217" fill="#667981" font-family="Arial,sans-serif" font-size="8">ABOUT</text>
+    <text x="705" y="217" fill="#667981" font-family="Arial,sans-serif" font-size="8">SERVICES</text>
+    <rect x="296" y="234" width="531" height="280" fill="#E5ECEB"/>
+    <rect x="296" y="234" width="286" height="280" fill="#D5E4E1"/>
+    <path d="M296 448c79-103 142-144 218-142 32 1 54 16 68 39v169H296V448Z" fill="#78928C"/>
+    <path d="M296 475c73-55 145-76 286-27v66H296v-39Z" fill="#496C69"/>
+    <path d="M456 267h-116v7h116v-7Zm-34 20H340v7h82v-7Z" fill="#A48B63"/>
+    <text x="340" y="325" fill="#19313A" font-family="Georgia,serif" font-size="24">A better way</text>
+    <text x="340" y="353" fill="#19313A" font-family="Georgia,serif" font-size="24">to do business.</text>
+    <text x="340" y="378" fill="#62757A" font-family="Arial,sans-serif" font-size="9">Thoughtful solutions for a changing world.</text>
+    <rect x="340" y="398" width="105" height="27" rx="3" fill="#B89151"/>
+    <text x="392" y="415" fill="#fff" font-family="Arial,sans-serif" font-size="8" letter-spacing="1" text-anchor="middle">OUR SERVICES</text>
+    <path d="M516 546h93l24 107H486l30-107Z" fill="#6C7376"/>
+    <path d="M418 655h289l-18 17H434l-16-17Z" fill="#BFC2C2"/>
+  </g>
+  <g>
+    <rect x="867" y="317" width="241" height="179" rx="12" fill="#1B2227"/>
+    <rect x="878" y="328" width="219" height="151" rx="5" fill="#C6D9D8"/>
+    <path d="M878 431c51-46 98-59 147-25 28 20 52 21 72-2v75H878v-48Z" fill="#708E8A"/>
+    <path d="M878 451c68-27 119-5 219-18v46H878v-28Z" fill="#526D6C"/>
+    <path d="M960 496h55l13 148h-81l13-148Z" fill="#53585B"/>
+    <path d="M920 644h136l20 12H904l16-12Z" fill="#9CA2A2"/>
+  </g>
+  <g>
+    <rect x="627" y="684" width="157" height="45" rx="7" fill="#25282A"/>
+    <path d="m640 694 131 0-11 25H651l-11-25Z" fill="#A9A7A0"/>
+    <path d="m649 697 113 0-8 17h-96l-9-17Z" fill="#383C3D"/>
+    <rect x="800" y="683" width="51" height="11" rx="5" fill="#17191B"/>
+    <ellipse cx="909" cy="693" rx="22" ry="10" fill="#1B1E20"/>
+    <path d="m1010 607 8-16 51 44-10 9-49-37Z" fill="#292B2D"/>
+    <path d="m1005 597 21-4 38 41-14 3-45-40Z" fill="#D6D0C3"/>
+  </g>
+  <text x="68" y="835" fill="#F1D184" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">DIGITAL BUSINESS EXPERIENCE</text>
+</svg>

@@ -96,7 +96,7 @@ export default function Footer({ settings }: { settings: SiteSettings }) {
           </ul>
         </div>
       </div>
-      <div className="border-t border-border py-5 text-center text-xs text-muted/60">
+      <div className="border-t border-border px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-5 text-center text-xs text-muted/60">
         © {new Date().getFullYear()} Amazing Viral Studios. All rights
         reserved.
       </div>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="1090" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#213142"/>
+      <stop offset=".55" stop-color="#111720"/>
+      <stop offset="1" stop-color="#090B10"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="325" y1="192" x2="650" y2="661" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8E9"/>
+      <stop offset="1" stop-color="#DED2BD"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="421" y1="281" x2="619" y2="496" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7B76B"/>
+      <stop offset=".55" stop-color="#D27565"/>
+      <stop offset="1" stop-color="#725071"/>
+    </linearGradient>
+    <filter id="shadow" x="170" y="106" width="878" height="749" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="1003" cy="147" r="189" fill="#6BA8B0" fill-opacity=".09"/>
+  <path d="M0 682c253-68 405 87 655 39 230-44 351-91 545-44v223H0V682Z" fill="#080A0F" fill-opacity=".65"/>
+  <ellipse cx="596" cy="754" rx="398" ry="49" fill="#000" fill-opacity=".65" filter="url(#shadow)"/>
+  <g transform="rotate(-8 475 430)">
+    <rect x="276" y="161" width="399" height="563" rx="8" fill="#E9E0D0"/>
+    <rect x="290" y="175" width="371" height="535" rx="3" fill="url(#paper)"/>
+    <rect x="317" y="207" width="317" height="453" rx="2" fill="#F6EFDF"/>
+    <path d="M317 335c79-60 133-80 194-45 44 26 75 40 123 7v220H317V335Z" fill="#3F4A57"/>
+    <circle cx="484" cy="340" r="93" fill="url(#ink)"/>
+    <path d="M317 477c78-52 145-56 199-24 47 28 79 31 118-2v188H317V477Z" fill="#AE5963"/>
+    <path d="M317 544c95-40 147-24 199-1 48 20 73 18 118-8v104H317V544Z" fill="#D99D60"/>
+    <text x="475" y="264" fill="#2D3944" font-family="Arial,sans-serif" font-size="12" letter-spacing="4" text-anchor="middle">CULTURE IN COLOR</text>
+    <text x="475" y="602" fill="#FFF6E6" font-family="Georgia,serif" font-size="28" text-anchor="middle">A brighter season</text>
+    <text x="475" y="630" fill="#F6E5CE" font-family="Arial,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">POSTER  /  ART DIRECTION  /  PRINT</text>
+    <path d="M304 191h15m-15 0v15m343-15h-15m15 0v15m-343 503h15m-15 0v-15m343 15h-15m15 0v-15" stroke="#A3A095" stroke-width="1"/>
+  </g>
+  <g transform="rotate(8 825 451)">
+    <rect x="710" y="205" width="264" height="434" rx="8" fill="#EBE4D7"/>
+    <rect x="722" y="217" width="240" height="410" rx="3" fill="#F7F1E6"/>
+    <rect x="745" y="242" width="194" height="220" rx="3" fill="#3F646A"/>
+    <circle cx="842" cy="336" r="63" fill="#E5B877"/>
+    <path d="M745 401c61-42 107-38 194-2v63H745v-61Z" fill="#C36D5E"/>
+    <text x="842" y="492" fill="#344044" font-family="Georgia,serif" font-size="23" text-anchor="middle">Field Notes</text>
+    <text x="842" y="519" fill="#82908D" font-family="Arial,sans-serif" font-size="9" letter-spacing="3" text-anchor="middle">A COLLECTION OF IDEAS</text>
+    <path d="M771 551h142M771 564h118M771 577h132" stroke="#B7AEA0" stroke-width="2" stroke-linecap="round"/>
+    <path d="M732 228h12m-12 0v12m220-12h-12m12 0v12m-220 377h12m-12 0v-12m220 12h-12m12 0v-12" stroke="#A3A095"/>
+  </g>
+  <g>
+    <rect x="165" y="536" width="148" height="111" rx="8" fill="#E6DCCB"/>
+    <rect x="178" y="549" width="122" height="84" rx="3" fill="#F8F3E9"/>
+    <rect x="191" y="560" width="41" height="61" rx="2" fill="#D47C69"/>
+    <rect x="238" y="560" width="50" height="27" rx="2" fill="#435C69"/>
+    <rect x="238" y="594" width="50" height="27" rx="2" fill="#D3AD67"/>
+    <rect x="152" y="653" width="174" height="12" rx="6" fill="#9FA8AA"/>
+    <rect x="741" y="662" width="210" height="17" rx="8.5" fill="#22282E"/>
+    <rect x="762" y="682" width="168" height="12" rx="6" fill="#EAE1D2"/>
+    <rect x="783" y="697" width="126" height="8" rx="4" fill="#D5CAB9"/>
+  </g>
+  <text x="68" y="835" fill="#F1D184" font-family="Arial,sans-serif" font-size="17" letter-spacing="5">PRINT DESIGN  /  PRESS READY</text>
+</svg>

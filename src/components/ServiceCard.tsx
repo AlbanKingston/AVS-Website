@@ -1,8 +1,5 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import type { Service } from "@/lib/types";
 
@@ -14,11 +11,7 @@ export default function ServiceCard({
   compact?: boolean;
 }) {
   return (
-    <motion.article
-      whileHover={{ y: -8 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
-      className="card group flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-gold/40 hover:shadow-glow-sm"
-    >
+    <article className="card group flex h-full flex-col overflow-hidden transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-1 hover:border-gold/40 hover:shadow-glow-sm">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={service.image_url}
@@ -49,6 +42,6 @@ export default function ServiceCard({
           Enquire Now
         </Link>
       </div>
-    </motion.article>
+    </article>
   );
 }

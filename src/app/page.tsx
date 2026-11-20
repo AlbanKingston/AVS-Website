@@ -1,11 +1,12 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Sparkles, Zap, ShieldCheck, Layers, Quote } from "lucide-react";
 import Hero from "@/components/Hero";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
+import PortfolioImage from "@/components/PortfolioImage";
 import Reveal from "@/components/Reveal";
 import { getPortfolio, getServices, getTestimonials } from "@/lib/data";
+import { getPortfolioFallbackImage } from "@/lib/defaults";
 
 export const revalidate = 60;
 
@@ -38,11 +39,10 @@ export default async function Home() {
     getPortfolio(),
     getTestimonials(),
   ]);
-  const featured = (
-    portfolio.some((p) => p.featured)
-      ? portfolio.filter((p) => p.featured)
-      : portfolio
-  ).slice(0, 3);
+  const featured = [
+    ...portfolio.filter((p) => p.featured),
+    ...portfolio.filter((p) => !p.featured),
+  ].slice(0, 3);
 
   return (
     <>
@@ -84,12 +84,13 @@ export default async function Home() {
                   href="/portfolio"
                   className="group relative block aspect-[4/5] overflow-hidden rounded-3xl border border-border transition-all duration-300 hover:border-gold/30"
                 >
-                  <Image
+                  <PortfolioImage
                     src={p.image_url}
+                    fallbackSrc={getPortfolioFallbackImage(p.category)}
                     alt={p.title}
-                    fill
                     sizes="(max-width:768px) 100vw, 33vw"
-                    className="object-cover transition duration-700 group-hover:scale-110"
+                    className="object-cover object-center transition duration-700 group-hover:scale-110"
+                    priority={i === 0}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6">

@@ -19,7 +19,7 @@ export default function FloatingActions({
   );
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3">
+    <div className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] z-40 flex flex-col gap-3">
       {settings.phone && (
         <a
           href={`tel:${settings.phone}`}

@@ -5,6 +5,7 @@ import {
   DEFAULT_SERVICES,
   DEFAULT_SETTINGS,
   DEFAULT_TESTIMONIALS,
+  getPortfolioFallbackImage,
 } from "./defaults";
 import type {
   PortfolioProject,
@@ -55,9 +56,21 @@ export const getPricing = async () =>
     (plan) => !isEventManagementOrDecoration(plan.service_name)
   );
 export const getPortfolio = async () =>
-  (await load<PortfolioProject>("portfolio_projects", "created_at", false, DEFAULT_PORTFOLIO)).filter(
-    (project) => !/decorat/i.test(`${project.title} ${project.category}`)
-  );
+  (
+    await load<PortfolioProject>(
+      "portfolio_projects",
+      "created_at",
+      false,
+      DEFAULT_PORTFOLIO
+    )
+  )
+    .filter((project) => !/decorat/i.test(`${project.title} ${project.category}`))
+    .map((project) => ({
+      ...project,
+      image_url:
+        project.image_url?.trim() ||
+        getPortfolioFallbackImage(project.category),
+    }));
 export const getTestimonials = () =>
   load<Testimonial>("testimonials", "client_name", true, DEFAULT_TESTIMONIALS, (q) =>
     q.eq("published", true)
