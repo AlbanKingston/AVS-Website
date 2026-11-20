@@ -45,12 +45,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <head>
         <link rel="preload" as="image" href="/avs-logo.png" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              'try { const n = performance.getEntriesByType("navigation")[0]; if (sessionStorage.getItem("avs-cinematic-intro-played") && n && n.type === "back_forward") document.documentElement.dataset.avsIntroSeen = "true"; } catch { document.documentElement.dataset.avsIntroSeen = "true"; }',
-          }}
-        />
       </head>
       <body className="flex flex-col">
         <MotionConfig reducedMotion="user">

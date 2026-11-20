@@ -4,8 +4,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-const INTRO_KEY = "avs-cinematic-intro-played";
-
 export default function CinematicIntro() {
   const pathname = usePathname();
   const initialized = useRef(false);
@@ -21,25 +19,7 @@ export default function CinematicIntro() {
 
     if (initialized.current) return;
     initialized.current = true;
-
-    try {
-      const navigation = performance.getEntriesByType(
-        "navigation"
-      )[0] as PerformanceNavigationTiming | undefined;
-      const isHistoryRestore = navigation?.type === "back_forward";
-
-      if (window.sessionStorage.getItem(INTRO_KEY) && isHistoryRestore) {
-        setComplete(true);
-        document.documentElement.dataset.avsIntroSeen = "true";
-        return;
-      }
-
-      window.sessionStorage.setItem(INTRO_KEY, "true");
-      setPlaying(true);
-    } catch {
-      setComplete(true);
-      document.documentElement.dataset.avsIntroSeen = "true";
-    }
+    setPlaying(true);
   }, [pathname]);
 
   useEffect(() => {
@@ -56,7 +36,7 @@ export default function CinematicIntro() {
         setPlaying(false);
         setComplete(true);
       },
-      reducedMotion ? 850 : 3900
+      reducedMotion ? 1100 : 3900
     );
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -123,17 +103,6 @@ export default function CinematicIntro() {
           <span className="cinematic-intro__tagline">DIGITAL SOLUTIONS</span>
         </div>
       </div>
-      <button
-        type="button"
-        className="cinematic-intro__skip"
-        onClick={() => {
-          setPlaying(false);
-          setComplete(true);
-        }}
-        aria-label="Skip intro"
-      >
-        Skip intro
-      </button>
     </div>
   );
 }

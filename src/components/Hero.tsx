@@ -67,9 +67,9 @@ export default function Hero() {
         </motion.div>
         <motion.p
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 0.16, duration: 0.3 }}
-          className="mt-12 text-xs uppercase tracking-[0.3em] text-gold/50"
+          className="mt-12 text-xs font-medium uppercase tracking-[0.3em] text-gold-light/90 drop-shadow-[0_0_10px_rgba(240,213,138,0.25)] sm:text-sm"
         >
           Creativity That Makes You Viral.
         </motion.p>
